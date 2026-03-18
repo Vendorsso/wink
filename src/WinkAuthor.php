@@ -121,6 +121,16 @@ class WinkAuthor extends AbstractWinkModel implements Authenticatable
     }
 
     /**
+     * Get the name of the password attribute for the user.
+     *
+     * @return string
+     */
+    public function getAuthPasswordName()
+    {
+        return 'password';
+    }
+
+    /**
      * Get the token value for the "remember me" session.
      *
      * @return string|null
