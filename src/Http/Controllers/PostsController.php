@@ -121,11 +121,14 @@ class PostsController
             $tag = $allTags->where('id', $incomingTag['id'])->first();
 
             if (! $tag) {
-                $tag = WinkTag::create([
-                    'id' => $id = Str::uuid(),
-                    'name' => $incomingTag['name'],
-                    'slug' => Str::slug($incomingTag['name']),
-                ]);
+                $slug = Str::slug($incomingTag['name']);
+
+                $tag = $allTags->where('slug', $slug)->first()
+                    ?? WinkTag::create([
+                        'id' => Str::uuid(),
+                        'name' => $incomingTag['name'],
+                        'slug' => $slug,
+                    ]);
             }
 
             return (string) $tag->id;
