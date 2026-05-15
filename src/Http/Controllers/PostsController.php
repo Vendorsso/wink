@@ -27,6 +27,8 @@ class PostsController
             $q->whereHas('tags', function ($query) use ($value) {
                 $query->where('id', $value);
             });
+        })->when(request('site'), function ($q, $value) {
+            $q->site($value);
         })
             ->orderBy('created_at', 'DESC')
             ->with('tags')
@@ -80,6 +82,7 @@ class PostsController
             'featured_image_caption' => request('featured_image_caption', ''),
             'publish_date' => request('publish_date', ''),
             'meta' => request('meta', (object) []),
+            'site' => request('site'),
         ];
 
         validator($data, [

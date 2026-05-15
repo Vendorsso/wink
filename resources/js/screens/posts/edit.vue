@@ -45,6 +45,7 @@
                     published: false,
                     markdown: ({null: null, 'markdown' : true, 'rich': false})[window.Wink.default_editor],
                     publish_date: '',
+                    site: '',
                     meta: {
                         meta_description: '',
                         opengraph_title: '',
@@ -155,6 +156,7 @@
                     this.form.markdown = data.markdown;
                     this.form.tags = data.tags || '';
                     this.form.author_id = data.author_id || '';
+                    this.form.site = data.site || '';
                     this.form.featured_image = data.featured_image;
                     this.form.featured_image_caption = data.featured_image_caption;
                     this.form.meta = {
@@ -461,6 +463,15 @@
                     <option v-for="author in authors" :value="author.id">{{author.name}}</option>
                 </select>
                 <form-errors :errors="errors.author_id"></form-errors>
+            </div>
+
+            <div class="input-group" v-if="Wink.sites && Wink.sites.length">
+                <label for="site" class="input-label">Site</label>
+                <select name="site" class="input" v-model="form.site" id="site">
+                    <option value="">— None —</option>
+                    <option v-for="site in Wink.sites" :value="site">{{site}}</option>
+                </select>
+                <form-errors :errors="errors.site"></form-errors>
             </div>
 
             <div class="input-group">

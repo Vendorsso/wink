@@ -22,6 +22,7 @@
                     id: '',
                     name: '',
                     slug: '',
+                    site: '',
                     meta: {
                         meta_description: '',
                         opengraph_title: '',
@@ -51,6 +52,7 @@
                 if (this.id != 'new') {
                     this.form.name = response.data.entry.name;
                     this.form.slug = response.data.entry.slug;
+                    this.form.site = response.data.entry.site || '';
 
                     this.form.meta = {
                         meta_description: response.data.entry.meta.meta_description || '',
@@ -191,6 +193,15 @@
                            id="slug">
 
                     <form-errors :errors="form.errors.slug"></form-errors>
+                </div>
+
+                <div class="input-group" v-if="Wink.sites && Wink.sites.length">
+                    <label for="site" class="input-label">Site</label>
+                    <select name="site" class="input" v-model="form.site" id="site">
+                        <option value="">— None —</option>
+                        <option v-for="site in Wink.sites" :value="site">{{site}}</option>
+                    </select>
+                    <form-errors :errors="form.errors.site"></form-errors>
                 </div>
             </div>
         </div>

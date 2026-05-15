@@ -60,7 +60,13 @@ class WinkPage extends AbstractWinkModel
         'id' => 'string',
         'body' => 'string',
         'meta' => 'array',
+        'site' => 'string',
     ];
+
+    public function scopeSite($query, string $site)
+    {
+        return $query->where('site', $site);
+    }
 
     /**
      * Get the renderable page content.

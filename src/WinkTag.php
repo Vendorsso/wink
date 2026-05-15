@@ -58,7 +58,13 @@ class WinkTag extends AbstractWinkModel
      */
     protected $casts = [
         'meta' => 'array',
+        'site' => 'string',
     ];
+
+    public function scopeSite($query, string $site)
+    {
+        return $query->where('site', $site);
+    }
 
     /**
      * The posts that has the tag.

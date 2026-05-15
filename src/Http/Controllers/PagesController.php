@@ -18,6 +18,8 @@ class PagesController
     {
         $entries = WinkPage::when(request()->has('search'), function ($q) {
             $q->where('title', 'LIKE', '%'.request('search').'%');
+        })->when(request('site'), function ($q, $value) {
+            $q->site($value);
         })
             ->orderBy('created_at', 'DESC')
             ->paginate(config('wink.pagination.pages', 30));
@@ -59,6 +61,7 @@ class PagesController
             'slug' => request('slug'),
             'body' => request('body', ''),
             'meta' => request('meta', (object) []),
+            'site' => request('site'),
         ];
 
         validator($data, [

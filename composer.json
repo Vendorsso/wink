@@ -1,5 +1,6 @@
 {
     "name": "themsaid/wink",
+    "version": "2.0.2",
     "description": "Wink Publishing Framework.",
     "keywords": ["framework", "laravel", "blog"],
     "license": "MIT",

@@ -18,6 +18,8 @@ class TagsController
     {
         $entries = WinkTag::when(request()->has('search'), function ($q) {
             $q->where('name', 'LIKE', '%'.request('search').'%');
+        })->when(request('site'), function ($q, $value) {
+            $q->site($value);
         })
             ->orderBy('created_at', 'DESC')
             ->withCount('posts')
@@ -61,6 +63,7 @@ class TagsController
             'name' => request('name'),
             'slug' => request('slug'),
             'meta' => request('meta', (object) []),
+            'site' => request('site'),
         ];
 
         validator($data, [

@@ -74,7 +74,13 @@ class WinkPost extends AbstractWinkModel
         'published' => 'boolean',
         'markdown' => 'boolean',
         'publish_date' => 'datetime',
+        'site' => 'string',
     ];
+
+    public function scopeSite($query, string $site)
+    {
+        return $query->where('site', $site);
+    }
 
     /**
      * The tags the post belongs to.

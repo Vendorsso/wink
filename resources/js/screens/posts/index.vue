@@ -28,6 +28,7 @@
                     status: '',
                     author_id: '',
                     tag_id: '',
+                    site: '',
                 }
             };
         },
@@ -132,6 +133,16 @@
                                 v-model="filters.tag_id">
                             <option value="">All</option>
                             <option v-for="tag in tags" :value="tag.id">{{tag.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-3" v-if="Wink.sites && Wink.sites.length">
+                        <span>Site</span>
+                        <select name="site"
+                                class="border border-lighter rounded w-3/5 focus:outline-none appearance-none py-1 px-3"
+                                v-model="filters.site">
+                            <option value="">All</option>
+                            <option v-for="site in Wink.sites" :value="site">{{site}}</option>
                         </select>
                     </div>
 

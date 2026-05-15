@@ -109,4 +109,15 @@ return [
         'teams' => 30,
         'pages' => 30,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Wink Sites
+    |--------------------------------------------------------------------------
+    |
+    | The list of sites that posts, tags, and pages can belong to. Each entry
+    | becomes an option in the admin UI and a filter for public blog routes.
+    |
+    */
+    'sites' => explode(',', env('WINK_SITES', '')),
 ];

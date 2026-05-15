@@ -17,6 +17,7 @@ class Wink
             'preview_path' => config('wink.preview_path'),
             'author' => auth('wink')->check() ? auth('wink')->user()->only('name', 'avatar', 'id') : null,
             'default_editor' => config('wink.editor.default'),
+            'sites' => config('wink.sites', []),
         ];
     }
 }

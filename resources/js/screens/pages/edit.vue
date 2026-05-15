@@ -27,6 +27,7 @@
                     title: 'Page Title',
                     slug: '',
                     body: '',
+                    site: '',
                     meta: {
                         meta_description: '',
                         opengraph_title: '',
@@ -113,6 +114,7 @@
                     this.form.title = data.title;
                     this.form.slug = data.slug;
                     this.form.body = data.body;
+                    this.form.site = data.site || '';
                     this.form.meta = {
                         meta_description: data.meta.meta_description || '',
                         opengraph_title: data.meta.opengraph_title || '',
@@ -264,6 +266,15 @@
                        id="slug">
 
                 <form-errors :errors="errors.slug"></form-errors>
+            </div>
+
+            <div class="input-group" v-if="Wink.sites && Wink.sites.length">
+                <label for="site" class="input-label">Site</label>
+                <select name="site" class="input" v-model="form.site" id="site">
+                    <option value="">— None —</option>
+                    <option v-for="site in Wink.sites" :value="site">{{site}}</option>
+                </select>
+                <form-errors :errors="errors.site"></form-errors>
             </div>
 
             <div class="mt-10">
